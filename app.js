@@ -6,11 +6,13 @@ const cors = require("cors");
 const signUpRouter = require("./routes/user.route")
 
 
+
 // middleware
 app.use(express.json());
 app.use(cors());
 
-app.use("/api/signup",signUpRouter)
+app.use("/api",signUpRouter)
+
 
 
 

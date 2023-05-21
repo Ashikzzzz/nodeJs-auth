@@ -99,6 +99,13 @@ userSchema.pre("save",function (next){
 
 })
 
+// compare password method 
+  userSchema.methods.comparePassword = (password, hash)=>{
+    const isPasswordValid = bcrypt.compareSync(password, hash)
+    return isPasswordValid
+}
+
+
 const UserModel = mongoose.model('UserModel', userSchema)
 
 module.exports = UserModel;
