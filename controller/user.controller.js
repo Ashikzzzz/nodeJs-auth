@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const { signUpServices, findAuserByEmail } = require("../services/user.services");
 const { generateToken } = require('../utils/token');
 // const generateToken = require("../utils/token")
@@ -98,4 +98,27 @@ exports.loginUser = async (req, res, next) => {
         })
     }
 };
+
+
+
+// user persistance
+exports.getMe =async(req, res)=>{
+    try {
+        const user = await findAuserByEmail(req?.user?.email)
+
+        res.status(401).json({
+            status: user,
+            messesge: "success"
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            status: 'error',
+            massage: "User inserted Error",
+            error: error.message
+        })
+    }
+}
+
+
 

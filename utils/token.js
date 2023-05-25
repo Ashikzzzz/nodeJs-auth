@@ -8,7 +8,7 @@ exports. generateToken =(userInfo)=>{
     }
 
     const token = jwt.sign(payLoad,process.env.Token_secret ,{
-        expiresIn : "20s"
+        expiresIn : "60s"
     })
 
     return token
